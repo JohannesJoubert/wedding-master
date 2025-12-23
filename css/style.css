@@ -196,7 +196,7 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #fff;
 }
 .fh5co-nav ul li.btn-cta a {
-  color: #F14E95;
+  color: #ffffff;
 }
 .fh5co-nav ul li.btn-cta a span {
   background: #fff;
@@ -204,7 +204,7 @@ h1, h2, h3, h4, h5, h6, figure {
   display: -moz-inline-stack;
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display: inline;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
@@ -761,13 +761,13 @@ h1, h2, h3, h4, h5, h6, figure {
   display: -moz-inline-stack;
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display: inline;
 }
 .fh5co-social-icons li a {
   display: -moz-inline-stack;
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display: inline;
   color: #F14E95;
   padding-left: 10px;
   padding-right: 10px;
@@ -787,7 +787,7 @@ h1, h2, h3, h4, h5, h6, figure {
   position: relative;
 }
 .fh5co-contact-info ul li:before {
-  color: #F14E95;
+  color: #000000;
   position: absolute;
   left: 0;
   top: .05em;
@@ -1182,7 +1182,7 @@ form label {
   margin-bottom: 10px;
   line-height: 1.5;
   font-weight: bold;
-  color: #F14E95;
+  color: #000000;
   font-family: "Sacramento", Arial, serif;
 }
 @media screen and (max-width: 768px) {
@@ -1225,7 +1225,7 @@ form label {
   display: -moz-inline-stack;
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display: inline;
   width: 100px;
   height: 100px;
 }
@@ -1375,7 +1375,8 @@ form label {
 #fh5co-started .btn {
   height: 54px;
   border: none !important;
-  background: #F14E95;
+  background: #000000;
+  /* background: #F14E95; */
   color: #fff;
   font-size: 16px;
   text-transform: uppercase;
@@ -1926,6 +1927,89 @@ form label {
     font-size: 2rem;
   }
 }
+
+#fh5co-started .row.animate-box {
+  display: flex;
+  justify-content: center;
+}
+
+#fh5co-couple .fh5co-heading {
+  margin-bottom: 1em;
+}
+
+#fh5co-couple .simply-countdown {
+  margin-bottom: 1em;
+}
+
+.guest-block {
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 6px;
+}
+
+.guest-block legend {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0 10px;
+}
+
+/* RSVP form – rounded / oval inputs */
+#rsvp-form .form-control {
+  border-radius: 30px;          /* controls how oval it is */
+  padding: 12px 18px;
+  height: auto;
+  box-shadow: none;
+  border: 2px solid rgba(0,0,0,0.15);
+}
+
+/* Textareas slightly less oval (looks better) */
+#rsvp-form textarea .form-control {
+  border-radius: 18px;
+}
+
+/* Dropdown arrows stay clean */
+#rsvp-form select .form-control {
+  cursor: pointer;
+}
+
+/* Focus state (matches elegant wedding feel) */
+#rsvp-form .form-control:focus {
+  border-color: #0a1f44;        /* your navy */
+  box-shadow: 0 0 0 2px rgba(10, 31, 68, 0.15);
+}
+
+#rsvp-form .btn {
+  border-radius: 30px;
+  padding: 12px 36px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#rsvp-form {
+  padding: 30px;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Add space above the RSVP helper text */
+#fh5co-contact .fh5co-heading p {
+  margin-top: 20px;
+  padding-top: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
