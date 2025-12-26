@@ -2000,17 +2000,48 @@ form label {
 }
 
 
+/* =========================
+   Mobile font size boost
+   ========================= */
+@media screen and (max-width: 768px) {
 
+  /* Base text */
+  body {
+    font-size: 18px;
+    line-height: 1.8;
+  }
 
+  p {
+    font-size: 18px;
+  }
 
+  /* Section descriptions */
+  .fh5co-heading p {
+    font-size: 18px;
+  }
 
+  /* Navigation links */
+  .fh5co-nav ul li a {
+    font-size: 16px;
+  }
 
+  /* Buttons */
+  .btn {
+    font-size: 17px;
+  }
 
+  /* Forms */
+  .form-control {
+    font-size: 18px;
+  }
 
+  /* Countdown text */
+  .simply-countdown > .simply-section .simply-amount {
+    font-size: 2.4rem;
+  }
 
+  .simply-countdown > .simply-section .simply-word {
+    font-size: 0.9rem;
+  }
+}
 
-
-
-
-
-/*# sourceMappingURL=style.css.map */
