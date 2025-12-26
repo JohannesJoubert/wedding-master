@@ -308,6 +308,10 @@ document.getElementById("rsvp-form").addEventListener("submit", function(e) {
     type: 'inline'
   });
 
+  setTimeout(() => {
+    $.magnificPopup.close();
+    window.location.href = "contact.html"; // redirect to contact page
+  }, 10000); // 10000ms = 10 seconds
   // Prepare AJAX submission to Netlify
   const formData = new FormData(this);
 
