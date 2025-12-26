@@ -89,6 +89,7 @@
                 name="rsvp"
                 method="POST"
                 data-netlify="true"
+                novalidate
               >
                 <input type="hidden" name="form-name" value="rsvp">   
                 <input type="hidden" name="guests_data" id="guests_data">
@@ -185,7 +186,7 @@
               type="text"
               name="gas_${index}_voornaam"
               class="form-control"
-              required
+             
             >
           </div>
           <div class="col-md-6">
@@ -194,7 +195,7 @@
               type="text"
               name="gas_${index}_van"
               class="form-control"
-              required
+              
             >
           </div>
         </div>
@@ -275,6 +276,7 @@
   const guestBlocks = document.querySelectorAll(".guest-block");
   const gaste = [];
 
+  // Collect guest data
   guestBlocks.forEach((block, index) => {
     gaste.push({
       voornaam: block.querySelector(`[name="gas_${index}_voornaam"]`)?.value || "",
@@ -286,18 +288,30 @@
     });
   });
 
+  // Store JSON for Netlify
   document.getElementById("guests_data").value = JSON.stringify(gaste, null, 2);
 
-  // Show popup
+  // Simple validation: check all guests have first and last name
+  const valid = gaste.every(g => g.voornaam && g.van);
+  if(!valid) {
+    alert("Vul asseblief alle velde in vir elke gas."); 
+    e.preventDefault(); // prevent submission
+    return;
+  }
+
+  // Determine which popup to show
   const niemandKomNie = gaste.every(g => g.bywoning === "nee");
+
+  // Show Magnific Popup
   $.magnificPopup.open({
     items: { src: niemandKomNie ? '#rsvp-nee' : '#rsvp-sukses' },
     type: 'inline'
   });
 
-  // **Remove e.preventDefault()**
-  // Let Netlify handle the form submit
+  // No e.preventDefault(), Netlify will handle the submit automatically
 });
+
+
 
     </script>
 
