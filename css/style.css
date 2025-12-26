@@ -932,27 +932,26 @@ form label {
   margin-left: 3px;
 }
 
-.simply-countdown {
-  /* The countdown */
+/* .simply-countdown {
+   The countdown 
   margin-bottom: 2em;
 }
 
 .simply-countdown > .simply-section {
-  /* coutndown blocks */
+  coutndown blocks 
   display: inline-block;
   width: 100px;
   height: 100px;
-  background: /*rgba(0, 0, 0, 0.85) */                         rgba(10, 31, 68, 0.85);
+  background:                    rgba(10, 31, 68, 0.85);
   margin: 0 4px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   border-radius: 50%;
   position: relative;
-  /* animation: pulse 1s ease infinite;*/
-}
+} */
 
-@keyframes pulse {
+/* @keyframes pulse {
   0% {
     transform: scale(1);
   }
@@ -962,10 +961,10 @@ form label {
   100% {
     transform: scale(1);
   }
-}
+} */
 
-.simply-countdown > .simply-section > div {
-  /* countdown block inner div */
+/* .simply-countdown > .simply-section > div {
+   countdown block inner div 
   display: table-cell;
   vertical-align: middle;
   height: 100px;
@@ -976,20 +975,20 @@ form label {
 .simply-countdown > .simply-section .simply-word {
   display: block;
   color: white;
-  /* amounts and words */
+  amounts and words 
 }
 
 .simply-countdown > .simply-section .simply-amount {
   font-size: 30px;
-  /* amounts */
+  amounts 
 }
 
 .simply-countdown > .simply-section .simply-word {
   color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
   font-size: 12px;
-  /* words */
-}
+  words 
+} */
 
 #fh5co-testimonial,
 #fh5co-services,
@@ -1849,7 +1848,7 @@ form label {
    Inline Countdown – Stacked
    ============================== */
 
-.simply-countdown {
+/*.simply-countdown {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1857,10 +1856,10 @@ form label {
   margin-bottom: 2em;
 }
 
-/* Countdown item */
+ Countdown item 
 .simply-countdown > .simply-section {
   display: flex;
-  align-items: center; /* KEY FIX */
+  align-items: center; 
   justify-content: center;
   background: none;
   width: auto;
@@ -1871,7 +1870,7 @@ form label {
 }
 
 
-/* Stack number above label */
+ Stack number above label 
 .simply-countdown > .simply-section > div {
   display: flex;
   flex-direction: column;
@@ -1881,14 +1880,14 @@ form label {
 }
 
 
-/* NUMBER */
+ NUMBER 
 .simply-countdown > .simply-section .simply-amount {
   font-size: 5 rem;
   font-weight: 600;
   color: #000000;
 }
 
-/* WORD */
+ WORD 
 .simply-countdown > .simply-section .simply-word {
   margin-top: 4px;
   font-size: 2rem;
@@ -1904,7 +1903,7 @@ form label {
   margin-left: 24px;
   font-size: 2.4rem;
   font-weight: 300;
-  line-height: 1;      /* KEY FIX */
+  line-height: 1;      
   color: rgba(0, 0, 0, 0.4);
 }
 
@@ -1926,7 +1925,7 @@ form label {
     margin-left: 16px;
     font-size: 2rem;
   }
-}
+}*/
 
 #fh5co-started .row.animate-box {
   display: flex;
@@ -1936,10 +1935,10 @@ form label {
 #fh5co-couple .fh5co-heading {
   margin-bottom: 1em;
 }
-
+/*
 #fh5co-couple .simply-countdown {
   margin-bottom: 1em;
-}
+} */
 
 .guest-block {
   border: 1px solid rgba(0,0,0,0.1);
@@ -2034,14 +2033,171 @@ form label {
   .form-control {
     font-size: 18px;
   }
-
+}
   /* Countdown text */
-  .simply-countdown > .simply-section .simply-amount {
+  /* .simply-countdown > .simply-section .simply-amount {
     font-size: 2.4rem;
   }
 
   .simply-countdown > .simply-section .simply-word {
     font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .simply-countdown > .simply-section .simply-amount {
+    font-size: 2.8rem !important;
+  }
+
+  .simply-countdown > .simply-section .simply-word {
+    font-size: 1.1rem !important;
+  }
+
+  .simply-countdown > .simply-section:not(:last-child)::after {
+    font-size: 2.2rem !important;
+    margin-left: 14px;
+  } */
+
+/* ======================================
+   Simply Countdown – Pipe Style
+====================================== */
+
+.simply-countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  margin-top: 30px;
+}
+
+.simply-countdown > .simply-section {
+  position: relative;
+  padding: 0 28px;
+  text-align: center;
+}
+
+/* Light grey pipe divider */
+.simply-countdown > .simply-section:not(:last-child)::after {
+  content: "|";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d3d3d3; /* light grey */
+  font-size: 32px;
+  font-weight: 300;
+}
+
+/* Number */
+.simply-countdown .simply-amount {
+  display: block;
+  font-size: 42px;
+  font-weight: 600;
+  color: #0a1f44; /* navy */
+  line-height: 1.1;
+}
+
+/* Label below number */
+.simply-countdown .simply-word {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .simply-countdown .simply-amount {
+    font-size: 32px;
+  }
+
+  .simply-countdown > .simply-section {
+    padding: 0 16px;
+  }
+
+  .simply-countdown > .simply-section:not(:last-child)::after {
+    font-size: 24px;
+  }
+}
+
+/* =========================================
+   Verblyf Carousel – FORCE Overrides
+========================================= */
+
+/* Ensure background image shows */
+#fh5co-testimonial {
+  position: relative;
+}
+
+/* Dark overlay but keep slides clear */
+#fh5co-testimonial .overlay {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* FORCE white slide */
+#fh5co-testimonial .testimony-slide.accommodation-slide {
+  background: #ffffff !important;
+  opacity: 1 !important;
+  padding: 40px !important;
+  border-radius: 8px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Kill any inherited transparency */
+#fh5co-testimonial .testimony-slide * {
+  opacity: 1;
+}
+
+/* Layout */
+#fh5co-testimonial .accommodation-text {
+  text-align: left;
+}
+
+#fh5co-testimonial .accommodation-text h3 {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #0a1f44;
+}
+
+#fh5co-testimonial .accommodation-text .price {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0a1f44;
+  margin-bottom: 10px;
+}
+
+#fh5co-testimonial .accommodation-text p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* Image */
+#fh5co-testimonial .accommodation-image img {
+  width: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* Center carousel */
+#fh5co-testimonial .wrap-testimony {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  #fh5co-testimonial .accommodation-slide {
+    padding: 25px !important;
+  }
+
+  #fh5co-testimonial .accommodation-text {
+    text-align: center;
+    margin-bottom: 20px;
   }
 }
 
