@@ -1,15 +1,8 @@
 <!DOCTYPE html>
 <html class="no-js">
   <head>
-    <link
-      href="https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Sacramento"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet" />
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="css/animate.css" />
@@ -31,7 +24,6 @@
       <script src="js/respond.min.js"></script>
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-s
   </head>
   <body>
     <div class="fh5co-loader"></div>
@@ -94,14 +86,15 @@ s
                 name="rsvp"
                 method="POST"
                 data-netlify="true"
+                action="/thank-you.html"
               >
                 <input type="hidden" name="form-name" value="rsvp">   
 
                 <!-- Number of guests -->
                 <div class="row form-group">
                   <div class="col-md-4">
-                    <label for="guestCount">Hoeveel gaste?</label>
-                    <select id="guestCount" class="form-control">
+                    <label for="guestCount">Hoeveel gaste wil jy RSVP?</label>
+                    <select id="guestCount" name="guest_count" class="form-control">
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -290,28 +283,27 @@ s
     </script>
 
     <script>
-      document
-        .getElementById("rsvp-form")
-        .addEventListener("submit", function (e) {
-          const attendingSelects = document.querySelectorAll(".attending");
-          const allNo = [...attendingSelects].every(
-            (sel) => sel.value === "no"
-          );
+  document
+    .getElementById("rsvp-form")
+    .addEventListener("submit", function (e) {
+      const attendingSelects = document.querySelectorAll(".attending");
+      const allNo = [...attendingSelects].every(
+        (sel) => sel.value === "no"
+      );
 
-          if (allNo) {
-            const confirmNo = confirm(
-              "Is jy seker jy wil aandui dat niemand die troue gaan bywoon nie?"
-            );
+      if (allNo) {
+        const confirmNo = confirm(
+          "Is jy seker jy wil aandui dat niemand die troue gaan bywoon nie?"
+        );
 
-            if (!confirmNo) {
-              e.preventDefault();
-              return;
-            }
+        if (!confirmNo) {
+          e.preventDefault();
+        }
+        // IMPORTANT: do NOT redirect manually
+        // Let Netlify handle the submission + redirect
+      }
+    });
+</script>
 
-            window.location.href = "thank-you.html";
-            e.preventDefault();
-          }
-        });
-    </script>
   </body>
 </html>
