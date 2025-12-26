@@ -270,9 +270,10 @@
       renderGuests();
     </script>
 
+      <script>
+document.getElementById("rsvp-form").addEventListener("submit", function(e) {
+  e.preventDefault(); // Prevent default navigation
 
-    <script>
-      document.getElementById("rsvp-form").addEventListener("submit", function(e) {
   const guestBlocks = document.querySelectorAll(".guest-block");
   const gaste = [];
 
@@ -288,16 +289,15 @@
     });
   });
 
-  // Store JSON for Netlify
-  document.getElementById("guests_data").value = JSON.stringify(gaste, null, 2);
-
-  // Simple validation: check all guests have first and last name
+  // Simple validation
   const valid = gaste.every(g => g.voornaam && g.van);
   if(!valid) {
     alert("Vul asseblief alle velde in vir elke gas."); 
-    e.preventDefault(); // prevent submission
-    return;
+    return; // Stop submission
   }
+
+  // Store JSON for Netlify hidden field
+  document.getElementById("guests_data").value = JSON.stringify(gaste, null, 2);
 
   // Determine which popup to show
   const niemandKomNie = gaste.every(g => g.bywoning === "nee");
@@ -308,12 +308,26 @@
     type: 'inline'
   });
 
-  // No e.preventDefault(), Netlify will handle the submit automatically
+  // Prepare AJAX submission to Netlify
+  const formData = new FormData(this);
+
+  fetch("/", {
+    method: "POST",
+    headers: { "Accept": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData).toString()
+  })
+  .then(() => {
+    console.log("Form submitted to Netlify successfully!");
+    // You can optionally reset the form here:
+    // this.reset();
+  })
+  .catch(err => {
+    console.error("Form submission error:", err);
+    alert("Daar was 'n probleem met die stuur van die vorm. Probeer asseblief weer.");
+  });
 });
+</script>
 
-
-
-    </script>
 
     <!-- RSVP Sukses Popup -->
     <div id="rsvp-sukses" class="mfp-hide white-popup">
