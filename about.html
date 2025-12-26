@@ -271,49 +271,34 @@
 
 
     <script>
-      document
-      .getElementById("rsvp-form")
-      .addEventListener("submit", function (e) {
+      document.getElementById("rsvp-form").addEventListener("submit", function(e) {
+  const guestBlocks = document.querySelectorAll(".guest-block");
+  const gaste = [];
 
-      const guestBlocks = document.querySelectorAll(".guest-block");
-      const gaste = [];
+  guestBlocks.forEach((block, index) => {
+    gaste.push({
+      voornaam: block.querySelector(`[name="gas_${index}_voornaam"]`)?.value || "",
+      van: block.querySelector(`[name="gas_${index}_van"]`)?.value || "",
+      bywoning: block.querySelector(`[name="gas_${index}_bywoning"]`)?.value || "",
+      dieet: block.querySelector(`[name="gas_${index}_dieet"]`)?.value || "",
+      liedjie: block.querySelector(`[name="gas_${index}_liedjie"]`)?.value || "",
+      verblyf: block.querySelector(`[name="gas_${index}_verblyf"]`)?.value || ""
+    });
+  });
 
-      // Versamel al die gas-data
-      guestBlocks.forEach((block, index) => {
-        gaste.push({
-          voornaam: block.querySelector(`[name="gas_${index}_voornaam"]`)?.value || "",
-          van: block.querySelector(`[name="gas_${index}_van"]`)?.value || "",
-          bywoning: block.querySelector(`[name="gas_${index}_bywoning"]`)?.value || "",
-          dieet: block.querySelector(`[name="gas_${index}_dieet"]`)?.value || "",
-          liedjie: block.querySelector(`[name="gas_${index}_liedjie"]`)?.value || "",
-          verblyf: block.querySelector(`[name="gas_${index}_verblyf"]`)?.value || ""
-        });
-      });
+  document.getElementById("guests_data").value = JSON.stringify(gaste, null, 2);
 
-      // Stoor alles as JSON vir Netlify
-      document.getElementById("guests_data").value =
-      JSON.stringify(gaste, null, 2);
+  // Show popup
+  const niemandKomNie = gaste.every(g => g.bywoning === "nee");
+  $.magnificPopup.open({
+    items: { src: niemandKomNie ? '#rsvp-nee' : '#rsvp-sukses' },
+    type: 'inline'
+  });
 
-      // Bepaal of niemand kom nie
-      const niemandKomNie = gaste.every(g => g.bywoning === "nee");
+  // **Remove e.preventDefault()**
+  // Let Netlify handle the form submit
+});
 
-      // Wys toepaslike popup
-      $.magnificPopup.open({
-        items: {
-          src: niemandKomNie ? '#rsvp-nee' : '#rsvp-sukses'
-        },
-        type: 'inline'
-      });
-    
-        // Laat Netlify submit ná kort vertraging
-      setTimeout(() => {
-        window.location.href = "contact.html";
-      }, 10000);
-
-
-      // Verhoed onmiddellike submit
-      e.preventDefault();
-      });
     </script>
 
     <!-- RSVP Sukses Popup -->
