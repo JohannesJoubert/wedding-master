@@ -89,6 +89,7 @@
                 action="/thank-you.html"
               >
                 <input type="hidden" name="form-name" value="rsvp">   
+                <input type="hidden" name="guests_data" id="guests_data">
 
                 <!-- Number of guests -->
                 <div class="row form-group">
@@ -165,56 +166,6 @@
       const guestContainer = document.getElementById("guest-container");
       const guestCountSelect = document.getElementById("guestCount");
 
-  //     function createGuestBlock(index) {
-  //       return `
-  // <fieldset class="guest-block">
-  //   <legend>Gas ${index + 1}</legend>
-
-  //   <div class="row form-group">
-  //     <div class="col-md-6">
-  //       <label>Naam</label>
-  //       <input type="text" class="form-control" required>
-  //     </div>
-  //     <div class="col-md-6">
-  //       <label>Van</label>
-  //       <input type="text" class="form-control" required>
-  //     </div>
-  //   </div>
-
-  //   <div class="row form-group">
-  //     <div class="col-md-6">
-  //       <label>Gaan jy die troue bywoon?</label>
-  //       <select class="form-control attending">
-  //         <option value="yes">Ja</option>
-  //         <option value="no">Nee</option>
-  //       </select>
-  //     </div>
-
-  //     <div class="col-md-6">
-  //       <label>Dieetvereistes</label>
-  //       <input type="text" class="form-control" placeholder="Geen / Vegetaries / Allergieë">
-  //     </div>
-  //   </div>
-
-  //   <div class="row form-group">
-  //     <div class="col-md-6">
-  //       <label>Liedjie-voorstel</label>
-  //       <input type="text" class="form-control">
-  //     </div>
-
-  //     <div class="col-md-6">
-  //       <label>Bly jy by die venue?</label>
-  //       <select class="form-control accommodation">
-  //         <option value="no">Nee</option>
-  //         <option value="single">Enkelkamer – R250 p/n</option>
-  //         <option value="couple">Paartjie-kamer – R900 p/n</option>
-  //         <option value="family">Gesinskamer – R1500 p/n</option>
-  //       </select>
-  //     </div>
-  //   </div>
-  // </fieldset>`;
-      //}
-
       function createGuestBlock(index) {
   return `
   <fieldset class="guest-block">
@@ -283,27 +234,38 @@
     </script>
 
     <script>
-  document
-    .getElementById("rsvp-form")
-    .addEventListener("submit", function (e) {
-      const attendingSelects = document.querySelectorAll(".attending");
-      const allNo = [...attendingSelects].every(
-        (sel) => sel.value === "no"
-      );
+      document
+      .getElementById("rsvp-form")
+      .addEventListener("submit", function (e) {
 
+      const guestBlocks = document.querySelectorAll(".guest-block");
+      const guests = [];
+
+      guestBlocks.forEach((block, index) => {
+        guests.push({
+          first_name: block.querySelector(`[name="guest_${index}_first_name"]`)?.value || "",
+          last_name: block.querySelector(`[name="guest_${index}_last_name"]`)?.value || "",
+          attending: block.querySelector(`[name="guest_${index}_attending"]`)?.value || "",
+          diet: block.querySelector(`[name="guest_${index}_diet"]`)?.value || "",
+          song: block.querySelector(`[name="guest_${index}_song"]`)?.value || "",
+          accommodation: block.querySelector(`[name="guest_${index}_accommodation"]`)?.value || ""
+        });
+      });
+
+      document.getElementById("guests_data").value = JSON.stringify(guests, null, 2);
+
+      // OPTIONAL: confirm if nobody attends
+      const allNo = guests.every(g => g.attending === "no");
       if (allNo) {
         const confirmNo = confirm(
           "Is jy seker jy wil aandui dat niemand die troue gaan bywoon nie?"
         );
-
         if (!confirmNo) {
           e.preventDefault();
         }
-        // IMPORTANT: do NOT redirect manually
-        // Let Netlify handle the submission + redirect
       }
     });
-</script>
+    </script>
 
   </body>
 </html>
