@@ -89,7 +89,14 @@ s
 
           <div class="row">
             <div class="col-md-10 col-md-offset-1 animate-box">
-              <form id="rsvp-form">
+              <form
+                id="rsvp-form"
+                name="rsvp"
+                method="POST"
+                data-netlify="true"
+              >
+                <input type="hidden" name="form-name" value="rsvp">   
+
                 <!-- Number of guests -->
                 <div class="row form-group">
                   <div class="col-md-4">
@@ -165,26 +172,76 @@ s
       const guestContainer = document.getElementById("guest-container");
       const guestCountSelect = document.getElementById("guestCount");
 
+  //     function createGuestBlock(index) {
+  //       return `
+  // <fieldset class="guest-block">
+  //   <legend>Gas ${index + 1}</legend>
+
+  //   <div class="row form-group">
+  //     <div class="col-md-6">
+  //       <label>Naam</label>
+  //       <input type="text" class="form-control" required>
+  //     </div>
+  //     <div class="col-md-6">
+  //       <label>Van</label>
+  //       <input type="text" class="form-control" required>
+  //     </div>
+  //   </div>
+
+  //   <div class="row form-group">
+  //     <div class="col-md-6">
+  //       <label>Gaan jy die troue bywoon?</label>
+  //       <select class="form-control attending">
+  //         <option value="yes">Ja</option>
+  //         <option value="no">Nee</option>
+  //       </select>
+  //     </div>
+
+  //     <div class="col-md-6">
+  //       <label>Dieetvereistes</label>
+  //       <input type="text" class="form-control" placeholder="Geen / Vegetaries / Allergieë">
+  //     </div>
+  //   </div>
+
+  //   <div class="row form-group">
+  //     <div class="col-md-6">
+  //       <label>Liedjie-voorstel</label>
+  //       <input type="text" class="form-control">
+  //     </div>
+
+  //     <div class="col-md-6">
+  //       <label>Bly jy by die venue?</label>
+  //       <select class="form-control accommodation">
+  //         <option value="no">Nee</option>
+  //         <option value="single">Enkelkamer – R250 p/n</option>
+  //         <option value="couple">Paartjie-kamer – R900 p/n</option>
+  //         <option value="family">Gesinskamer – R1500 p/n</option>
+  //       </select>
+  //     </div>
+  //   </div>
+  // </fieldset>`;
+      //}
+
       function createGuestBlock(index) {
-        return `
+  return `
   <fieldset class="guest-block">
     <legend>Gas ${index + 1}</legend>
 
     <div class="row form-group">
       <div class="col-md-6">
         <label>Naam</label>
-        <input type="text" class="form-control" required>
+        <input type="text" name="guest_${index}_first_name" class="form-control" required>
       </div>
       <div class="col-md-6">
         <label>Van</label>
-        <input type="text" class="form-control" required>
+        <input type="text" name="guest_${index}_last_name" class="form-control" required>
       </div>
     </div>
 
     <div class="row form-group">
       <div class="col-md-6">
         <label>Gaan jy die troue bywoon?</label>
-        <select class="form-control attending">
+        <select name="guest_${index}_attending" class="form-control attending">
           <option value="yes">Ja</option>
           <option value="no">Nee</option>
         </select>
@@ -192,19 +249,24 @@ s
 
       <div class="col-md-6">
         <label>Dieetvereistes</label>
-        <input type="text" class="form-control" placeholder="Geen / Vegetaries / Allergieë">
+        <input
+          type="text"
+          name="guest_${index}_diet"
+          class="form-control"
+          placeholder="Geen / Vegetaries / Allergieë"
+        >
       </div>
     </div>
 
     <div class="row form-group">
       <div class="col-md-6">
         <label>Liedjie-voorstel</label>
-        <input type="text" class="form-control">
+        <input type="text" name="guest_${index}_song" class="form-control">
       </div>
 
       <div class="col-md-6">
         <label>Bly jy by die venue?</label>
-        <select class="form-control accommodation">
+        <select name="guest_${index}_accommodation" class="form-control accommodation">
           <option value="no">Nee</option>
           <option value="single">Enkelkamer – R250 p/n</option>
           <option value="couple">Paartjie-kamer – R900 p/n</option>
@@ -213,7 +275,7 @@ s
       </div>
     </div>
   </fieldset>`;
-      }
+}
 
       function renderGuests() {
         guestContainer.innerHTML = "";
