@@ -302,16 +302,6 @@
   // Determine which popup to show
   const niemandKomNie = gaste.every(g => g.bywoning === "nee");
 
-  // Show Magnific Popup
-  $.magnificPopup.open({
-    items: { src: niemandKomNie ? '#rsvp-nee' : '#rsvp-sukses' },
-    type: 'inline'
-  });
-
-  setTimeout(() => {
-    $.magnificPopup.close();
-    window.location.href = "contact.html"; // redirect to contact page
-  }, 10000); // 10000ms = 10 seconds
   // Prepare AJAX submission to Netlify
   const formData = new FormData(this);
 
@@ -322,8 +312,18 @@
   })
   .then(() => {
     console.log("Form submitted to Netlify successfully!");
-    // You can optionally reset the form here:
-    // this.reset();
+    
+    // Show Magnific Popup AFTER successful submission
+    $.magnificPopup.open({
+      items: { src: niemandKomNie ? '#rsvp-nee' : '#rsvp-sukses' },
+      type: 'inline'
+    });
+
+    // Redirect AFTER showing popup
+    setTimeout(() => {
+      $.magnificPopup.close();
+      window.location.href = "contact.html";
+    }, 10000); // 10000ms = 10 seconds
   })
   .catch(err => {
     console.error("Form submission error:", err);
