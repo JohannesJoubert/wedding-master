@@ -184,7 +184,7 @@
             <label>Voornaam</label>
             <input
               type="text"
-              name="gas_${index}_voornaam"
+              data-field="voornaam"
               class="form-control"
              
             >
@@ -193,7 +193,7 @@
             <label>Van</label>
             <input
               type="text"
-              name="gas_${index}_van"
+              data-field="van"
               class="form-control"
               
             >
@@ -204,7 +204,7 @@
           <div class="col-md-6">
             <label>Gaan jy die troue bywoon?</label>
             <select
-              name="gas_${index}_bywoning"
+              data-field="bywoning"
               class="form-control attending"
             >
               <option value="ja">Ja</option>
@@ -216,7 +216,7 @@
             <label>Dieetvereistes</label>
             <input
               type="text"
-              name="gas_${index}_dieet"
+              data-field="dieet"
               class="form-control"
               placeholder="Geen / Vegetaries / Allergieë"
             >
@@ -228,7 +228,7 @@
             <label>Liedjie-voorstel</label>
             <input
               type="text"
-              name="gas_${index}_liedjie"
+              data-field="liedjie"
               class="form-control"
             >
           </div>
@@ -236,7 +236,7 @@
           <div class="col-md-6">
             <label>Bly jy by die venue?</label>
             <select
-              name="gas_${index}_verblyf"
+              data-field="verblyf"
               class="form-control accommodation"
             >
               <option value="nee">Nee</option>
@@ -271,7 +271,7 @@
     </script>
 
       <script>
-document.getElementById("rsvp-form").addEventListener("submit", function(e) {
+  document.getElementById("rsvp-form").addEventListener("submit", function(e) {
   e.preventDefault(); // Prevent default navigation
 
   const guestBlocks = document.querySelectorAll(".guest-block");
@@ -280,12 +280,12 @@ document.getElementById("rsvp-form").addEventListener("submit", function(e) {
   // Collect guest data
   guestBlocks.forEach((block, index) => {
     gaste.push({
-      voornaam: block.querySelector(`[name="gas_${index}_voornaam"]`)?.value || "",
-      van: block.querySelector(`[name="gas_${index}_van"]`)?.value || "",
-      bywoning: block.querySelector(`[name="gas_${index}_bywoning"]`)?.value || "",
-      dieet: block.querySelector(`[name="gas_${index}_dieet"]`)?.value || "",
-      liedjie: block.querySelector(`[name="gas_${index}_liedjie"]`)?.value || "",
-      verblyf: block.querySelector(`[name="gas_${index}_verblyf"]`)?.value || ""
+      voornaam: block.querySelector(`[data-field="voornaam"]`)?.value || "",
+      van: block.querySelector(`[data-field="van"]`)?.value || "",
+      bywoning: block.querySelector(`[data-field="bywoning"]`)?.value || "",
+      dieet: block.querySelector(`[data-field="dieet"]`)?.value || "",
+      liedjie: block.querySelector(`[data-field="liedjie"]`)?.value || "",
+      verblyf: block.querySelector(`[data-field="verblyf"]`)?.value || ""
     });
   });
 
@@ -317,7 +317,7 @@ document.getElementById("rsvp-form").addEventListener("submit", function(e) {
 
   fetch("/", {
     method: "POST",
-    headers: { "Accept": "application/x-www-form-urlencoded" },
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams(formData).toString()
   })
   .then(() => {
