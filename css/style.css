@@ -226,7 +226,7 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-event,
 .fh5co-bg {
   background-size: cover;
-  background-position: top center;
+  background-position: center;
   background-repeat: no-repeat;
   position: relative;
 }
@@ -2297,4 +2297,95 @@ form label {
 .panel-body table td {
   border: 1px solid #eee;
   padding: 10px 14px;
+}
+
+/* Dress code colour palette */
+
+.dress-colours {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 15px;
+}
+
+.colour-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.colour-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+
+/* Individual colours */
+/* Wedding dress code colour palette */
+
+.colour-circle.light-blue {
+  background-color: #9DBCD4; /* ligte blou */
+}
+
+.colour-circle.dark-blue {
+  background-color: #2F4A73; /* donker blou */
+}
+
+.colour-circle.turquoise {
+  background-color: #5FB3B3; /* turquoise */
+}
+
+.colour-circle.maroon {
+  background-color: #6B1F2B; /* maroon */
+}
+
+.colour-circle.wine {
+  background-color: #ff001e; /* rooiwyn */
+}
+
+.colour-circle.purple {
+  background-color: #7A5C8E; /* pers */
+}
+
+.colour-circle.orange {
+  background-color: #D68C45; /* oranje */
+}
+
+.colour-circle.yellow {
+  background-color: #E6C85E; /* geel */
+}
+
+.colour-circle.pastel-green {
+  background-color: #AFC8A0; /* pastel groen */
+}
+
+.colour-circle.dark-green {
+  background-color: #2F5D50; /* donker groen */
+}
+
+.colour-circle.beige {
+  background-color: #E6DCCF; /* beige */
+}
+
+.colour-circle.grey {
+  background-color: #B8B8B8; /* grys */
+}
+
+.colour-circle.light-purple {
+  background-color: #C3B1E1; /* ligte pers */
+}
+
+
+
+/* Optional softer text */
+.panel-body .muted {
+  color: #777;
+  font-size: 13px;
+}
+
+.colour-circle {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
