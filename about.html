@@ -73,16 +73,13 @@
 
       <div id="fh5co-contact">
         <div class="container">
-          <div class="row animate-box">
+          <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
               <p>
-                Vul asseblief die vorm in vir elke gas wat saam met jou kom<br>
-							  RSVP voor <strong>1 Februarie 2026</strong>
+							  RSVP asseblief voor <strong>13 Februarie 2026</strong>
               </p>
             </div>
-          </div>
 
-          <div class="row">
             <div class="col-md-10 col-md-offset-1 animate-box">
               <form
                 id="rsvp-form"
@@ -97,7 +94,7 @@
                 <!-- Number of guests -->
                 <div class="row form-group">
                   <div class="col-md-4">
-                    <label for="guestCount">Hoeveel gaste wil jy RSVP?</label>
+                    <label for="guestCount">Vir hoeveel gaste wil jy RSVP?</label>
                     <select id="guestCount" name="guest_count" class="form-control">
                       <option value="1">1</option>
                       <option value="2">2</option>
@@ -181,12 +178,11 @@
 
         <div class="row form-group">
           <div class="col-md-6">
-            <label>Voornaam</label>
+            <label>Naam</label>
             <input
               type="text"
-              data-field="voornaam"
+              data-field="naam"
               class="form-control"
-             
             >
           </div>
           <div class="col-md-6">
@@ -213,19 +209,19 @@
           </div>
 
           <div class="col-md-6">
-            <label>Dieetvereistes</label>
+            <label>Dieët vereistes</label>
             <input
               type="text"
               data-field="dieet"
               class="form-control"
-              placeholder="Geen / Vegetaries / Allergieë"
+              placeholder="Geen/Vegetaries/Allergieë"
             >
           </div>
         </div>
 
         <div class="row form-group">
           <div class="col-md-6">
-            <label>Liedjie-voorstel</label>
+            <label>Liedjie voorstel</label>
             <input
               type="text"
               data-field="liedjie"
@@ -280,7 +276,7 @@
   // Collect guest data
   guestBlocks.forEach((block, index) => {
     gaste.push({
-      voornaam: block.querySelector(`[data-field="voornaam"]`)?.value || "",
+      naam: block.querySelector(`[data-field="naam"]`)?.value || "",
       van: block.querySelector(`[data-field="van"]`)?.value || "",
       bywoning: block.querySelector(`[data-field="bywoning"]`)?.value || "",
       dieet: block.querySelector(`[data-field="dieet"]`)?.value || "",
@@ -290,7 +286,7 @@
   });
 
   // Simple validation
-  const valid = gaste.every(g => g.voornaam && g.van);
+  const valid = gaste.every(g => g.naam && g.van);
   if(!valid) {
     alert("Vul asseblief alle velde in vir elke gas."); 
     return; // Stop submission
@@ -323,7 +319,7 @@
     setTimeout(() => {
       $.magnificPopup.close();
       window.location.href = "contact.html";
-    }, 10000); // 10000ms = 10 seconds
+    }, 7000); // 10000ms = 10 seconds
   })
   .catch(err => {
     console.error("Form submission error:", err);

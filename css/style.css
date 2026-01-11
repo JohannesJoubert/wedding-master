@@ -2389,3 +2389,30 @@ form label {
 .colour-circle {
   box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
+
+.padkaart-container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.padkaart-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Outfit gallery */
+.outfit-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Mobile-first: stack nicely */
+@media (max-width: 768px) {
+  .outfit-gallery {
+    grid-template-columns: 1fr;
+  }
+}
